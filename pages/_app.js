@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import 'styles/globals.css';
+import '../styles/globals.css';
 
 import { userService } from 'services';
 import { Nav, Alert } from 'components';
@@ -12,6 +12,8 @@ function App({ Component, pageProps }) {
     const router = useRouter();
     const [user, setUser] = useState(null);
     const [authorized, setAuthorized] = useState(false);
+
+
 
     useEffect(() => {
         // on initial load - run auth check 
@@ -53,13 +55,17 @@ function App({ Component, pageProps }) {
                 <title>Phoenique Life</title>
             </Head>
 
-            <div className={`container ${user ? 'bg-blue-300' : ''}`}>
+
+            <div className={`mx-auto  ${user ? 'bg-primary' : ''}`}>
                 <Nav />
                 <Alert />
                 {authorized &&
-                    <Component {...pageProps} />
+                    <div className="flex items-center justify-center  ">
+                        <Component {...pageProps} />
+                    </div>
                 }
             </div>
+
         </>
     );
 }

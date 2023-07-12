@@ -2,8 +2,8 @@ export { Layout };
 
 function Layout({ children }) {
     return (
-        <div className="p-4">
-            <div className="container">
+        <div >
+            <div className=" w-100 p-10">
                 {children}
             </div>
         </div>

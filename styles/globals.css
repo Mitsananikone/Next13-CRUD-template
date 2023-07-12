@@ -2,6 +2,75 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.app-container {
-    min-height: 350px;
+
+:root {
+    --color-primary: #FBF4B5;
+    --color-secondary: #FFF9D4;
+    --color-accent: #C1A87D;
+    --color-highlight: #D3A13B;
+    --color-dark: #B58D3D;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #D3A13B;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #FFF9D4, #C1A87D);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #FFF9D4, #C1A87D);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.container {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+
+@media screen and (max-width: 320px) {
+    .container {
+        width: 100%;
+        border: 1px solid aqua;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 480px) {
+    .container {
+        width: 100%;
+        border: 1px solid blue;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .container {
+        width: 100%;
+        border: 1px solid green;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        display: flex-box;
+        width: 100%;
+        border: 1px solid yellow;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+    .container {
+        width: 100%;
+        border: 1px solid orange;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .container {
+        width: 100%;
+        border: 1px solid blue;
+    }
 }

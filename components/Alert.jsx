@@ -25,7 +25,7 @@ function Alert() {
     if (!alert) return null;
 
     return (
-        <div className="container">
+        <div className="container max-w-none">
             <div className="m-3">
                 <div className={`alert alert-dismissible ${alert.type}`}>
                     {alert.message}

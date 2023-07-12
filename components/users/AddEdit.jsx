@@ -18,6 +18,8 @@ function AddEdit(props) {
             .required('First Name is required'),
         lastName: Yup.string()
             .required('Last Name is required'),
+            email: Yup.string()
+            .required('Email is required'),
         username: Yup.string()
             .required('Username is required'),
         password: Yup.string()
@@ -60,42 +62,48 @@ function AddEdit(props) {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="row">
-                <div className="mb-3 col">
-                    <label className="form-label">First Name</label>
-                    <input name="firstName" type="text" {...register('firstName')} className={`form-control ${errors.firstName ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.firstName?.message}</div>
-                </div>
-                <div className="mb-3 col">
-                    <label className="form-label">Last Name</label>
-                    <input name="lastName" type="text" {...register('lastName')} className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.lastName?.message}</div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="mb-3 col">
-                    <label className="form-label">Username</label>
-                    <input name="username" type="text" {...register('username')} className={`form-control ${errors.username ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.email?.message}</div>
-                </div>
-                <div className="mb-3 col">
-                    <label className="form-label">
-                        Password
-                        {user && <em className="ms-1">(Leave blank to keep the same password)</em>}
-                    </label>
-                    <input name="password" type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.password?.message}</div>
-                </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="mb-3">
+                <label className="block text-gray-700">First Name</label>
+                <input name="firstName" type="text" {...register('firstName')} className={`border border-gray-300 rounded-md p-2 w-full ${errors.firstName ? 'border-red-500' : ''}`} />
+                {errors.firstName && <div className="text-red-500">{errors.firstName.message}</div>}
             </div>
             <div className="mb-3">
-                <button type="submit" disabled={formState.isSubmitting} className="btn btn-primary me-2">
-                    {formState.isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
-                    Save
-                </button>
-                <button onClick={() => reset(formOptions.defaultValues)} type="button" disabled={formState.isSubmitting} className="btn btn-secondary">Reset</button>
-                <Link href="/users" className="btn btn-link">Cancel</Link>
+                <label className="block text-gray-700">Last Name</label>
+                <input name="lastName" type="text" {...register('lastName')} className={`border border-gray-300 rounded-md p-2 w-full ${errors.lastName ? 'border-red-500' : ''}`} />
+                {errors.lastName && <div className="text-red-500">{errors.lastName.message}</div>}
             </div>
-        </form>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="mb-3">
+                <label className="block text-gray-700">Email</label>
+                <input name="email" type="text" {...register('email')} className={`border border-gray-300 rounded-md p-2 w-full ${errors.email ? 'border-red-500' : ''}`} />
+                {errors.email && <div className="text-red-500">{errors.email.message}</div>}
+            </div>
+            <div className="mb-3">
+                <label className="block text-gray-700">Username</label>
+                <input name="username" type="text" {...register('username')} className={`border border-gray-300 rounded-md p-2 w-full ${errors.username ? 'border-red-500' : ''}`} />
+                {errors.username && <div className="text-red-500">{errors.username.message}</div>}
+            </div>
+            <div className="mb-3">
+                <label className="block text-gray-700">
+                    Password
+                    {user && <em className="ms-1">(Leave blank to keep the same password)</em>}
+                </label>
+                <input name="password" type="password" {...register('password')} className={`border border-gray-300 rounded-md p-2 w-full ${errors.password ? 'border-red-500' : ''}`} />
+                {errors.password && <div className="text-red-500">{errors.password.message}</div>}
+            </div>
+        </div>
+        <div className="mb-3">
+            <button type="submit" disabled={formState.isSubmitting} className="btn btn-primary me-2">
+                {formState.isSubmitting && <span className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-gray-900 mr-1"></span>}
+                Save
+            </button>
+            <button onClick={() => reset(formOptions.defaultValues)} type="button" disabled={formState.isSubmitting} className="btn btn-secondary">Reset</button>
+            <Link href="/users" className="btn btn-link">Cancel</Link>
+        </div>
+    </form>
+    
     );
 }
